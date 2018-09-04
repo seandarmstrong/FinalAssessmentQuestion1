@@ -1,0 +1,39 @@
+﻿@model FinalAssessmentQuestion1.Models.NumberViewModel
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Enter Numbers</h3>
+
+@using (@Html.BeginForm("Result", "Home", FormMethod.Post))
+{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+
+    <div class="row">
+        <div class="col-md-2">
+            <label>Num1:</label>
+        </div>
+        <div class="col-md-10">
+            @Html.EditorFor(firstName => Model.Number1)
+            @Html.ValidationMessageFor(firstName => Model.Number1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Num2:</label>
+        </div>
+        <div class="col-md-10">
+            @Html.EditorFor(lastName => Model.Number2)
+            @Html.ValidationMessageFor(firstName => Model.Number2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <input type="submit" value="Add" />
+}
